@@ -13,10 +13,7 @@ class AddSchedule extends React.Component {
 
     AddSchedule = () => {
         axios
-            .post('https://localhost:7155/AddOrUpdateSchedule?name=' + this.state.Name + '&Description=' + this.state.Description, {
-                Name: this.state.Name,
-                Description: this.state.Description,
-            })
+            .post('https://localhost:7155/AddOrUpdateSchedule?name=' + this.state.Name + '&Description=' + this.state.Description)
             .then((json) => {
                 if (json.data.status === 'Success') {
                     console.log(json.data.status)

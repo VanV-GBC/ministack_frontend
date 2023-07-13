@@ -8,9 +8,12 @@ class Table extends Component {
     DeleteSchedule = () => {
         axios.delete('https://localhost:7155/DeleteSchedule?id=' + this.props.obj.id).then((json) => {
             if (json.data.status === 'Success') {
+
+                this.props.onDeleted(this.props.obj.id)
                 alert('Record deleted successfully')
             }
         })
+        
     }
     render() {
         return (
@@ -18,7 +21,7 @@ class Table extends Component {
                 <td>{this.props.obj.name}</td>
                 <td>{this.props.obj.description}</td>
                 <td>
-                    <Link to={'/edit/' + this.props.obj.Id} className="btn btn-success">
+                    <Link to={'/edit/' + this.props.obj.id} className="btn btn-success">
                         Edit
                     </Link>
                 </td>

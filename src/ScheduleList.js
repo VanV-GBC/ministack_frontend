@@ -19,9 +19,13 @@ export default class ScheduleList extends Component {
             })
     }
 
+    onBusinessDeleted = (id) => {
+        this.setState( (state) => ({ business : state.business.filter(x => x.id !== id) }))
+    }
+
     tabRow() {
-        return this.state.business.map(function (object, i) {
-            return <Table obj={object} key={i} />
+        return this.state.business.map( object => {
+            return <Table obj={object} key={object.id} onDeleted={this.onBusinessDeleted} />
         })
     }
 

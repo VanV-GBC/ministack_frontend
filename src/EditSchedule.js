@@ -9,7 +9,6 @@ class EditSchedule extends React.Component {
         this.onChangeName = this.onChangeName.bind(this)
         this.onChangeDescription = this.onChangeDescription.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
-
         this.state = {
             Name: '',
             Description: '',
@@ -20,9 +19,10 @@ class EditSchedule extends React.Component {
         axios
             .get('https://localhost:7155/GetScheduleById?id=' + this.props.match.params.id)
             .then((response) => {
+                console.log("res:", response)
                 this.setState({
-                    Name: response.data.Name,
-                    Description: response.data.Description,
+                    Name: response.data.name,
+                    Description: response.data.description,
                 })
             })
             .catch(function (error) {
@@ -48,7 +48,7 @@ class EditSchedule extends React.Component {
             Name: this.state.Name,
             Description: this.state.Description,
         }
-        axios.post('https://localhost:7155/AddOrUpdateSchedule/', obj).then((res) => console.log(res.data))
+        axios.post('https://localhost:7155/AddOrUpdateSchedule/?Id=' + this.props.match.params.id + '&Name='+ this.state.Name + '&Description='+ this.state.Description, obj).then((res) => console.log(res.data))
 
         this.props.history.push('/ScheduleList')
     }
@@ -83,7 +83,7 @@ class EditSchedule extends React.Component {
                     </FormGroup>
                     <Button type="submit" color="success">
                         Submit
-                    </Button>{' '}
+                    </Button>
                     <Button color="danger">Cancel</Button>{' '}
                 </Form>
             </Container>
