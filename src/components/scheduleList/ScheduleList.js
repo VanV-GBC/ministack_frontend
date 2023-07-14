@@ -8,6 +8,7 @@ export default class ScheduleList extends Component {
         super(props)
         this.state = { business: [] }
     }
+
     componentDidMount() {
         axios
             .get('https://localhost:7155/GetSchedules')
@@ -20,20 +21,42 @@ export default class ScheduleList extends Component {
     }
 
     onBusinessDeleted = (id) => {
+        console.log("onBusinessDeleted id:", id)
         this.setState( (state) => ({ business : state.business.filter(x => x.id !== id) }))
+        this.DeleteSchedule(id)
     }
 
-    tabRow() {
+    DeleteSchedule = (id) => {
+        console.log("deleteSchedule id:", id)
+        
+        axios.delete('https://localhost:7155/DeleteSchedule?id=' + id).then((json) => {
+            if (json.data.status === 'Success') {
+                alert('Record deleted successfully')
+            }
+        })
+        
+    }
+
+    // tabRow() {
+    //     return this.state.business.map( object => {
+    //         return <Table obj={object} key={object.id} onDeleted={this.onBusinessDeleted} />
+    //     })
+    // }
+
+    dataTable (){
         return this.state.business.map( object => {
-            return <Table obj={object} key={object.id} onDeleted={this.onBusinessDeleted} />
+            return {values: { name: object.name, description: object.description, key: object.id }, onDeleted: this.onBusinessDeleted }
         })
     }
 
+    
     render() {
+        //console.log("state:", this.state)
         return (
             <Container className="App">
-                <h4 className="PageHeading">Schedules List</h4>
-                <table className="table" style={{ marginTop: 10 }}>
+                <h4 className="PageHeading light-text">Schedules List</h4>
+                
+                {/* <table className="table" style={{ marginTop: 10 }}>
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -42,7 +65,11 @@ export default class ScheduleList extends Component {
                         </tr>
                     </thead>
                     <tbody>{this.tabRow()}</tbody>
-                </table>
+                </table> */}
+
+                <Table data={this.dataTable()}/>
+
+                
             </Container>
         )
     }

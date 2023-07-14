@@ -28,9 +28,35 @@
   color: #61dafb;
 }
 
+.light-text{
+  color: blanchedalmond;
+}
+
+label {
+  font-weight: 600;
+  font-size: small;
+}
+
+.fc a[data-navlink] {
+  text-decoration: none;
+  color: #dc730a;
+}
+
+.fc a[data-navlink] :hover {
+  text-decoration: none !important;
+  color: #e5e907;
+}
+
+.fc .fc-col-header-cell-cushion {
+  display: inline-block;
+  padding: 2px 4px;
+  color: #dc730a;
+  text-decoration: none;
+}
+
 .container {
   margin-top: 5rem;
-  background-color: rgba(214, 174, 14, 0.551);
+  background-color: #282c34;
 }
 
 @keyframes App-logo-spin {

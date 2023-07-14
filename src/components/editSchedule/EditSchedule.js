@@ -55,10 +55,10 @@ class EditSchedule extends React.Component {
     render() {
         return (
             <Container className="App">
-                <h4 className="PageHeading">Update Schedule Details</h4>
+                <h4 className="PageHeading light-text">Update Schedule Details</h4>
                 <Form className="form" onSubmit={this.onSubmit}>
                     <FormGroup>
-                        <Label for="Name" sm={2}>
+                        <Label for="Name" sm={2} className='light-text'>
                             Name
                         </Label>
                         <Input
@@ -70,7 +70,7 @@ class EditSchedule extends React.Component {
                         />
                     </FormGroup>
                     <FormGroup>
-                        <Label for="Description" sm={2}>
+                        <Label for="Description" sm={2} className='light-text'>
                             Description
                         </Label>
                         <Input

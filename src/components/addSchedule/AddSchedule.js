@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { Container, Form, FormGroup, Label, Input, Button } from 'reactstrap'
+import AddScheduleCalendar from './AddSchedCalendar'
 
 class AddSchedule extends React.Component {
     constructor(props) {
@@ -8,7 +9,9 @@ class AddSchedule extends React.Component {
         this.state = {
             Name: '',
             Description: '',
+            calendarToggle: false
         }
+        
     }
 
     AddSchedule = () => {
@@ -30,13 +33,20 @@ class AddSchedule extends React.Component {
         this.setState({ [e.target.name]: e.target.value })
     }
 
+    CalendarToggle = () => {
+        this.setState(prevState => ({
+            calendarToggle: !prevState.calendarToggle
+          }));
+    }
+
+
     render() {
         return (
             <Container className="App">
-                <h4 className="PageHeading">Enter Schedule Details</h4>
+                <h4 className="PageHeading light-text">Enter Schedule Details</h4>
                 <Form className="form">
                     <FormGroup row>
-                        <Label for="Name" sm={2}>
+                        <Label for="Name" sm={2} className='light-text'>
                             Name
                         </Label>
                         <Input
@@ -48,7 +58,7 @@ class AddSchedule extends React.Component {
                         />
                     </FormGroup>
                     <FormGroup row>
-                        <Label for="Description" sm={2}>
+                        <Label for="Description" sm={2} className='light-text'>
                             Description
                         </Label>
                         <Input
@@ -58,9 +68,18 @@ class AddSchedule extends React.Component {
                             placeholder="Enter Description"
                         />
                     </FormGroup>
+
+                    <div>
+                        { this.state.calendarToggle ? <AddScheduleCalendar/> : null }
+                    </div>
+
+                    <Button type="button" onClick={this.CalendarToggle} className="btn btn-success">
+                        { this.state.calendarToggle ? "Clear Events" : "Add Events" }
+                    </Button>{' '}
+
                     <Button type="button" onClick={this.AddSchedule} className="btn btn-success">
                         Submit
-                    </Button>
+                    </Button>{' '}
                     <Button color="danger">Cancel</Button>{' '}
                 </Form>
             </Container>
