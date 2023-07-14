@@ -25,10 +25,10 @@ const columns = [
         cell: (row) => {
             //console.log("data: ", row)
             return <div>
-                <Link to={'/edit/' + row.values.key} className="btn btn-success">
+                <Link to={'/edit/' + row.values.key} className="btn btn-success outline-success me-2 mb-3 mt-3">
                     Edit
                 </Link>{'  '}
-                <Button type="button" key={row.values.key} onClick={() => row.onDeleted(row.values.key)} className="btn btn-danger">
+                <Button type="button" key={row.values.key} onClick={() => row.onDeleted(row.values.key)} className="btn btn-danger me-2 mb-3 mt-3">
                     Delete
                 </Button>
             </div>
@@ -56,8 +56,9 @@ class Table extends Component {
             //         </Button>
             //     </td>
             // </tr>
-            <DataTable columns={columns} data={this.props.data} expandableRows /> //data={this.dataTable()}
-
+            
+            <DataTable columns={columns} data={this.props.data} expandableRows />
+            
 
         )
     }

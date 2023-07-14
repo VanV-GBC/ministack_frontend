@@ -73,14 +73,14 @@ class AddSchedule extends React.Component {
                         { this.state.calendarToggle ? <AddScheduleCalendar/> : null }
                     </div>
 
-                    <Button type="button" onClick={this.CalendarToggle} className="btn btn-success">
+                    <Button color='outline-light' onClick={this.CalendarToggle} className="me-2 mb-3">
                         { this.state.calendarToggle ? "Clear Events" : "Add Events" }
                     </Button>{' '}
 
-                    <Button type="button" onClick={this.AddSchedule} className="btn btn-success">
+                    <Button color='outline-success' onClick={this.AddSchedule} className="me-2 mb-3">
                         Submit
                     </Button>{' '}
-                    <Button color="danger">Cancel</Button>{' '}
+                    <Button color="outline-danger" className="me-2 mb-3">Cancel</Button>{' '}
                 </Form>
             </Container>
         )

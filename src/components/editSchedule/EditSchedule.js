@@ -56,7 +56,7 @@ class EditSchedule extends React.Component {
         return (
             <Container className="App">
                 <h4 className="PageHeading light-text">Update Schedule Details</h4>
-                <Form className="form" onSubmit={this.onSubmit}>
+                <Form className="form" onSubmit={this.onSubmit} >
                     <FormGroup>
                         <Label for="Name" sm={2} className='light-text'>
                             Name
@@ -81,10 +81,10 @@ class EditSchedule extends React.Component {
                             placeholder="Enter Description"
                         />
                     </FormGroup>
-                    <Button type="submit" color="success">
+                    <Button type="submit" color="outline-success" className='me-2 mb-3'>
                         Submit
-                    </Button>
-                    <Button color="danger">Cancel</Button>{' '}
+                    </Button>{' '}
+                    <Button color="outline-danger" className='me-2 mb-3'>Cancel</Button>{' '}
                 </Form>
             </Container>
         )

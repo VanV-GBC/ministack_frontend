@@ -68,9 +68,11 @@ export default class ScheduleList extends Component {
                 </table> */}
 
                 <Table data={this.dataTable()}/>
+                <br/>
 
                 
             </Container>
+            
         )
     }
 }
